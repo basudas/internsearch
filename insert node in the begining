@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* link;
+};
+
+struct node* head;
+
+void Insert_beg(int data)
+{
+	struct node* temp=(struct node*)malloc(sizeof(struct node));
+	temp->data=data;
+	temp->link=head;
+	head=temp;
+	
+}
+
+void Print_LL()
+{
+	struct node* basusree=head;
+	while(basusree!=NULL)
+	{
+		printf("%d",basusree->data);
+		basusree=basusree->link;
+	}
+	printf("\n");
+	
+}
+int main()
+{
+	head = NULL;
+	printf("total no of nodes\n");
+	int n; int i; int data;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&data);
+		Insert_beg(data);
+		Print_LL();
+	}
+}
