@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* link; 
+};
+
+struct node* head; //adress of linked list
+
+void Insert_at_pos(int data, int pos)
+{
+	struct node* temp; int i;
+	temp=(struct node*)malloc(sizeof(struct node));
+	temp->data = data;
+    if(pos==1)
+    {
+    	temp->link=head;
+    	head=temp;
+    	return;
+	}
+	struct node* basusree=head;
+	for(i=1;i<pos-1;i++)
+	{
+		basusree=basusree->link;
+	}
+	temp->link=basusree->link;
+	basusree->link=temp;
+}
+
+void Print_LL()
+{
+	struct node* basusree=head;
+	while(basusree->link!=NULL)
+	{
+		printf("%d",basusree->data);
+		basusree=basusree->link;
+	}
+	printf("%d",(*basusree).data);
+}
+int main()
+{
+	head=NULL; //list is empty
+	printf("how many nodes?\n");
+	int n; int data; int i; int pos;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("enter the data and position\n");
+		scanf("%d",&data);
+		scanf("%d",&pos);
+		Insert_at_pos(data,pos);
+		Print_LL();
+	}
+}
